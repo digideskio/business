@@ -6,6 +6,7 @@ gulp.task('default', function() {
 		'clean',
 		'css',
 		'js-move',
-		'js-compile'
+		'js-compile',
+		'ssh'
 	);
 });
