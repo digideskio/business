@@ -28,12 +28,6 @@ function checkLoaded(name) {
 		// check if we need to show social signon
 		socialConnect.setup()
 
-		// toggle subscribe button and share tools based on sub or not
-		// const selector = methode.subscribed ? '.g-header--social-list' : '.subscribe-header'
-		// const el = document.querySelector(selector)
-		// console.log(selector, el)
-		// toggleClass.remove(el, 'hide')
-
 	}
 
 }

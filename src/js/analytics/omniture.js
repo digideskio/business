@@ -1,5 +1,6 @@
 import loadJS from '../utils/loadJS.js'
 import getMetaContent from '../utils/getMetaContent'
+import getPageId from '../utils/getPageId'
 
 const omniture = {
 
@@ -11,7 +12,9 @@ const omniture = {
 
 	setupTracking: function(showPaywall) {
 
-		window.s.pageName = `${getMetaContent('section')} | ${getMetaContent('title')}`
+		const pageId = getPageId()
+
+		window.s.pageName = `${getMetaContent('section')} | ${title}`
 		window.s.channel = getMetaContent('section')
 		window.s.prop1 = `${getMetaContent('section')} | Specials`
 		window.s.prop6 = 'Infographic'
@@ -19,8 +22,8 @@ const omniture = {
 		window.s.eVar20 = window.methode.subscribed ? 'logged in' : 'logged out'
 		window.s.prop35 = window.methode.subscribed ? 'logged in' : 'logged out'
 		window.s.prop3 = getMetaContent('author')
-		window.s.prop67 = getMetaContent('pageId')
-		window.s.eVar67 = getMetaContent('pageId')
+		window.s.prop67 = pageId
+		window.s.eVar67 = pageId
 
 		if (window.methode && window.methode.freeviewCountIncremented) {
 

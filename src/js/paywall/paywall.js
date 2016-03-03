@@ -2,7 +2,7 @@ import disableScroll from '../utils/disableScroll'
 import isMobile from '../utils/isMobile'
 import toggleClass from '../utils/toggleClass'
 import insertStyle from '../utils/insertStyle'
-import getMetaContent from '../utils/getMetaContent'
+import getPageId from '../utils/getPageId'
 
 import html from './paywall-html'
 
@@ -14,7 +14,7 @@ export default function showPaywall() {
 	insertStyle(`*inject-css*`)
 
 	const tempDiv1 = document.createElement('div')
-	tempDiv1.innerHTML = html(getMetaContent('pageId'))
+	tempDiv1.innerHTML = html(getPageId())
 	const el = tempDiv1.firstChild
 
 	if (isMobile.any()) {

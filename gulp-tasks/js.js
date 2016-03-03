@@ -43,7 +43,14 @@ gulp.task('inject-socialConnect-css', function() {
 		.pipe(gulp.dest('.tmp/js/socialConnect'))
 });
 
-gulp.task('js-compile', ['inject-paywall-css', 'inject-socialConnect-css'], function() {
+gulp.task('inject-logo-svg', function() {
+	const css = fs.readFileSync('src/svg/g-logo.svg', 'utf8')
+	return gulp.src('.tmp/js/paywall/paywall-html.js')
+		.pipe(replace('*inject-svg*', css))
+		.pipe(gulp.dest('.tmp/js/paywall'))
+});
+
+gulp.task('js-compile', ['inject-paywall-css', 'inject-socialConnect-css', 'inject-logo-svg'], function() {
 	return gulp.src('.tmp/js/index.js')
 		.pipe(webpackStream(prod_config))
 		.pipe(rename(`business-${version}.js`))

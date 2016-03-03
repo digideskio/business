@@ -6,7 +6,7 @@ export default function chartbeat() {
 	window._sf_async_config.path = location.pathname
 
 	// Section and Author tagging
-	window._sf_async_config.sections = getMetaContent('sectionChartbeat')
+	window._sf_async_config.sections = getMetaContent('section').toLowerCase()
 	window._sf_async_config.authors = 'infographic'
 
 	function loadChartbeat() {

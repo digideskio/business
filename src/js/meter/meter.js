@@ -1,4 +1,5 @@
 import loadJS from '../utils/loadJS.js'
+import getPageId from '../utils/getPageId'
 
 export default function meter(cb) {
 	window.methode = {}
@@ -8,11 +9,11 @@ export default function meter(cb) {
 		const registrationWallVal = hasPaywall ? 'non-exempt' : 'exempt'
 
 		window.bglobe.freeviewMeter.init({
-			pageId: meta.pageId,
+			pageId: getPageId(),
 			registrationWall: registrationWallVal,
 			webType: 'app',
 			sectionPath: 'apps',
-			debug: false
+			debug: false,
 		})
 
 		cb()
