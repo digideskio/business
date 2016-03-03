@@ -4,7 +4,7 @@ import meter from './meter/meter'
 import socialConnect from './socialConnect/socialConnect'
 import showPaywall from './paywall/paywall'
 import toggleClass from './utils/toggleClass'
-import getMetaContent from '../utils/getMetaContent'
+import getMetaContent from './utils/getMetaContent'
 
 const loaded = { omniture: false, meter: false, 'socialConnect': false }
 
@@ -35,7 +35,7 @@ function checkLoaded(name) {
 
 function init() {
 
-	if (!window.location.hostname.indexOf('localhost') === 0) {
+	if (window.location.hostname.indexOf('localhost') !== 0) {
 
 		// tell chartbeat to do its thing
 		chartbeat()
