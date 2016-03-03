@@ -35,7 +35,7 @@ function checkLoaded(name) {
 
 function init() {
 
-	if (window.location.hostname.indexOf('localhost') !== 0) {
+	if (window.location.hostname.indexOf('localhost')) {
 
 		// tell chartbeat to do its thing
 		chartbeat()
