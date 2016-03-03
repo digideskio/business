@@ -5,7 +5,7 @@ import getMetaContent from '../utils/getMetaContent'
 export default function meter(cb) {
 	window.methode = {}
 
-	loadJS('https://www.bostonglobe.com/js/metercheck.js', function() {
+	loadJS('//www.bostonglobe.com/js/metercheck.js', function() {
 		const hasPaywall = getMetaContent('paywall')
 		const registrationWallVal = hasPaywall ? 'non-exempt' : 'exempt'
 

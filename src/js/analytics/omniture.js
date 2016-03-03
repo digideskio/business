@@ -6,7 +6,7 @@ const omniture = {
 
 	load: function(cb) {
 
-		loadJS('https://apps.bostonglobe.com/common/js/omniture/s_code_bgcom.27.5.js', cb)
+		loadJS('//apps.bostonglobe.com/common/js/omniture/s_code_bgcom.27.5.js', cb)
 
 	},
 

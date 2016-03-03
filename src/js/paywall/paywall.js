@@ -20,11 +20,11 @@ export default function paywall() {
 	if (isMobile.any()) {
 
 		el.style.backgroundSize = 'cover'
-		el.style.background = 'url("https://apps.bostonglobe.com/common/paywall/press.jpg")'
+		el.style.background = 'url("//apps.bostonglobe.com/common/paywall/press.jpg")'
 
 	} else {
 
-		const filepath = 'https://apps.bostonglobe.com/common/paywall/press'
+		const filepath = '//apps.bostonglobe.com/common/paywall/press'
 
 		const videoHTML = `
 			<video loop muted autoplay poster='${filepath}.jpg' class='fullscreen-bg__video'>
