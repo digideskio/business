@@ -4,12 +4,13 @@ import meter from './meter/meter'
 import socialConnect from './socialConnect/socialConnect'
 import showPaywall from './paywall/paywall'
 import toggleClass from './utils/toggleClass'
+import getMetaContent from '../utils/getMetaContent'
 
 const loaded = { omniture: false, meter: false, 'socialConnect': false }
 
 function triggerPaywall() {
-	// TODO replace meta with global business obj
-	if (meta.paywall && window.methode.freeviewCount > 5) paywall()
+
+	if (getMetaContent('paywall') === 'true' && window.methode.freeviewCount > 5) paywall()
 
 }
 
@@ -23,7 +24,7 @@ function checkLoaded(name) {
 		triggerPaywall()
 
 		// start tracking all the things
-		omniture.setupTracking(meta.paywall && methode.freeviewCount > 5)
+		omniture.setupTracking(getMetaContent('paywall') === 'true' && methode.freeviewCount > 5)
 		
 		// check if we need to show social signon
 		socialConnect.setup()
