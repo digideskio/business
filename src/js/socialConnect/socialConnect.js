@@ -3,6 +3,7 @@ import getJSON from 'get-json-lite'
 import loadJS from '../utils/loadJS'
 import toggleClass from '../utils/toggleClass'
 import insertStyle from '../utils/insertStyle'
+import getPageId from '../utils/getPageId'
 
 import html from './socialConnect-html'
 
@@ -89,7 +90,7 @@ function toQueryString(obj) {
 
 function sendEmail({ username, firstName = '', lastName = '', gender = '' }) {
 	
-	const source = 'socialConnectPrimaries'
+	const source = getPageId()
 	const subscribeNewsletter = 19172036
 	const a = 'sub'
 

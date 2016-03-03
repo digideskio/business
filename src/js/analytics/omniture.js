@@ -14,7 +14,10 @@ const omniture = {
 
 		const pageId = getPageId()
 
-		window.s.pageName = `${getMetaContent('section')} | ${title}`
+		const title = document.querySelector('title').textContent
+		const titleWithoutGlobe = title.split('- The Boston Globe')[0].trim()
+
+		window.s.pageName = `${getMetaContent('section')} | ${titleWithoutGlobe}`
 		window.s.channel = getMetaContent('section')
 		window.s.prop1 = `${getMetaContent('section')} | Specials`
 		window.s.prop6 = 'Infographic'

@@ -6,7 +6,7 @@ import getPageId from '../utils/getPageId'
 
 import html from './paywall-html'
 
-export default function showPaywall() {
+export default function paywall() {
 
 	disableScroll()
 

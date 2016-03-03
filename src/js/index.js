@@ -2,7 +2,7 @@ import omniture from './analytics/omniture'
 import chartbeat from './analytics/chartbeat'
 import meter from './meter/meter'
 import socialConnect from './socialConnect/socialConnect'
-import showPaywall from './paywall/paywall'
+import paywall from './paywall/paywall'
 import toggleClass from './utils/toggleClass'
 import getMetaContent from './utils/getMetaContent'
 
