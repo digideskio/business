@@ -140,7 +140,7 @@ function closeModal() {
 const socialConnect = {
 
 	load: cb => {
-		loadJS('//connect.facebook.net/en_US/sdk.js', cb)
+		loadJS('//connect.facebook.net/en_US/sdk.js', () => cb())
 	},
 
 	setup: () => {

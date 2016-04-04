@@ -4,82 +4,56 @@ import omniture from './analytics/omniture'
 import chartbeat from './analytics/chartbeat'
 import meter from './meter/meter'
 import socialConnect from './socialConnect/socialConnect'
-
-import toggleClass from './utils/toggleClass'
 import getMetaContent from './utils/getMetaContent'
 
-const loaded = { omniture: false, meter: false, 'socialConnect': false }
+function handleLoaded(libs) {
+	const paywall = libs['meter'] && !methode.subscribed && methode.showPaywall
 
-function triggerPaywall() {
+	// check if we need to trigger paywall
+	if (paywall) libs['meter'].showPaywall()
 
-	if (getMetaContent('paywall') === 'true' && window.methode.freeviewCount > 5) paywall()
-
-}
-
-function handleLoaded(result) {
-	console.log(result)
-	// loaded[name] = true
-		
-	// if(loaded.omniture && loaded.meter && loaded.socialConnect) {
-
-	// 	// check if we need to show paywall
-	// 	triggerPaywall()
-
-	// 	// start tracking all the things
-	// 	omniture.setupTracking(getMetaContent('paywall') === 'true' && methode.freeviewCount > 5)
-		
-	// 	// check if we need to show social signon
-	// 	socialConnect.setup()
-
-	// }
+	// start tracking all the things
+	omniture.setupTracking(paywall)
+	
+	// check if we need to show social signon		
+	if (libs['socialConnect']) socialConnect.setup()
 }
 
 function handleError(error) {
 	console.error(error)
 }
 
-function init() {
+function getLibName(lib) {
+	return Object.keys(lib)[0]
+}
 
+function init() {
 	if (window.location.hostname.indexOf('localhost')) {
 		// list of which libs to load
-		const defaultLibs = [chartbeat, omniture]
-		const optionalLibs = [meter, socialConnect]
+		const defaultLibs = [{chartbeat}, {omniture}]
+		const optionalLibs = [{meter}, {socialConnect}]
 
 		// add other libs to load conditionally
 		const libs = optionalLibs.reduce((previous, lib) => {
-			const add = getMetaContent(lib)
+			const add = getMetaContent(getLibName(lib)).toLowerCase() === 'true'
 			if (add) previous.push(lib)
 			return previous
 		}, defaultLibs)
 
 		// setup promises to load all libs then setup
-		const promises = libs.map(lib => {
-			return new Promise((resolve, reject) =>
-			  	lib.load(err => {
-			  		console.log(err)
-			  		console.log(lib.name)
+		const promises = libs.map(lib =>
+			new Promise((resolve, reject) =>
+			  	lib[getLibName(lib)].load(err => {
 			  		if (err) reject(err)
-			  		else resolve(lib.name)
+			  		else resolve(lib)
 			  	})
 			)
-		})
+		)
 
 		Promise.all(promises)
 			.then(handleLoaded)
 			.catch(handleError)
-		// // load chartbeat lib
-		
-
-		// // load omniture lib
-		// omniture.load(() => checkLoaded('omniture'))
-
-		// // load meter lib
-		// meter(() => checkLoaded('meter'))
-
-		// // load fb lib
-		// socialConnect.load(() => checkLoaded('socialConnect'));
 	}
-
 }
 
 init()
