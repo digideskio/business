@@ -4,15 +4,15 @@ function html() {
 
 <div class='socialconnect'>
 	<div class='socialconnect--contain'>
-		<button class="socialconnect--close">Close</button>
-		<p class='socialconnect--hed'>Wake up with today’s <span>top</span> stories</p>
-		<button class='socialconnect-facebook--button'>Connect with Facebook</button>
-		<p class='socialconnect--separator'>or</p>
+		<button class='socialconnect--close benton-bold'>Close</button>
+		<p class='socialconnect--hed miller-banner-regular'>Wake up with today’s <span>top</span> stories</p>
+		<button class='socialconnect-facebook--button benton-bold'>Connect with Facebook</button>
+		<p class='socialconnect--separator miller-banner-regular'>or</p>
 		<div class='socialconnect-email--validation'></div>
 		
 		<form id='email-form'> 
-			<input class='socialconnect-email--input' type='email' placeholder='Enter your email address'/>
-			<button type='submit' class='socialconnect-email--button'>Sign up &amp; return to story</button>
+			<input class='socialconnect-email--input benton-bold' type='email' placeholder='Enter your email address'/>
+			<button type='submit' class='socialconnect-email--button benton-bold'>Sign up &amp; return to story</button>
 		</form>
 
 		<div class='socialconnect--small'>
