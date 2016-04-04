@@ -42,8 +42,8 @@ function init() {
 
 	if (window.location.hostname.indexOf('localhost')) {
 		// list of which libs to load
-		const defaultLibs = ['chartbeat', 'omniture']
-		const optionalLibs = ['meter', 'socialConnect']
+		const defaultLibs = [chartbeat, omniture]
+		const optionalLibs = [meter, socialConnect]
 
 		// add other libs to load conditionally
 		const libs = optionalLibs.reduce((previous, lib) => {
