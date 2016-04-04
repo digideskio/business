@@ -139,14 +139,11 @@ function closeModal() {
 
 const socialConnect = {
 
-	load: function(cb) {
-
+	load: cb => {
 		loadJS('//connect.facebook.net/en_US/sdk.js', cb)
-
 	},
 
-	setup: function() {
-		
+	setup: () => {
 		FB.init({
 			appId 		: '751395421611272',
 			xfbml		: true,
@@ -155,9 +152,7 @@ const socialConnect = {
 		})
 
 		if (!methode.subscribed && methode.freeviewCount === 1 && methode.freeviewCountIncremented) {
-			
 			show()
-
 		}
 	}	
 }

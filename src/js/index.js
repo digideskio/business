@@ -1,9 +1,10 @@
 import 'promis'
+
 import omniture from './analytics/omniture'
 import chartbeat from './analytics/chartbeat'
 import meter from './meter/meter'
 import socialConnect from './socialConnect/socialConnect'
-import paywall from './paywall/paywall'
+
 import toggleClass from './utils/toggleClass'
 import getMetaContent from './utils/getMetaContent'
 
@@ -42,14 +43,14 @@ function init() {
 	if (window.location.hostname.indexOf('localhost')) {
 		// list of which libs to load
 		const defaultLibs = ['chartbeat', 'omniture']
-		const optionalLibs = ['meter', 'paywall', 'socialConnect']
+		const optionalLibs = ['meter', 'socialConnect']
 
 		// add other libs to load conditionally
-		const libs = optional.reduce((previous, lib) => {
+		const libs = optionalLibs.reduce((previous, lib) => {
 			const add = getMetaContent(lib)
 			if (add) previous.push(lib)
 			return previous
-		}, libsToLoad)
+		}, defaultLibs)
 
 		// setup promises to load all libs then setup
 		const promises = libs.map(lib => {
@@ -61,7 +62,7 @@ function init() {
 			)
 		})
 
-		promise.All(promises)
+		Promise.all(promises)
 			.then(handleLoaded)
 			.catch(handleError)
 		// // load chartbeat lib
