@@ -56,6 +56,8 @@ function init() {
 		const promises = libs.map(lib => {
 			return new Promise((resolve, reject) =>
 			  	lib.load(err => {
+			  		console.log(err)
+			  		console.log(lib.name)
 			  		if (err) reject(err)
 			  		else resolve(lib.name)
 			  	})
