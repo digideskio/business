@@ -1,3 +1,4 @@
+import 'promis'
 import omniture from './analytics/omniture'
 import chartbeat from './analytics/chartbeat'
 import meter from './meter/meter'
@@ -14,41 +15,66 @@ function triggerPaywall() {
 
 }
 
-function checkLoaded(name) {
-
-	loaded[name] = true
+function handleLoaded(result) {
+	console.log(result)
+	// loaded[name] = true
 		
-	if(loaded.omniture && loaded.meter && loaded.socialConnect) {
+	// if(loaded.omniture && loaded.meter && loaded.socialConnect) {
 
-		// check if we need to show paywall
-		triggerPaywall()
+	// 	// check if we need to show paywall
+	// 	triggerPaywall()
 
-		// start tracking all the things
-		omniture.setupTracking(getMetaContent('paywall') === 'true' && methode.freeviewCount > 5)
+	// 	// start tracking all the things
+	// 	omniture.setupTracking(getMetaContent('paywall') === 'true' && methode.freeviewCount > 5)
 		
-		// check if we need to show social signon
-		socialConnect.setup()
+	// 	// check if we need to show social signon
+	// 	socialConnect.setup()
 
-	}
+	// }
+}
 
+function handleError(error) {
+	console.error(error)
 }
 
 function init() {
 
 	if (window.location.hostname.indexOf('localhost')) {
+		// list of which libs to load
+		const defaultLibs = ['chartbeat', 'omniture']
+		const optionalLibs = ['meter', 'paywall', 'socialConnect']
 
-		// tell chartbeat to do its thing
-		chartbeat()
+		// add other libs to load conditionally
+		const libs = optional.reduce((previous, lib) => {
+			const add = getMetaContent(lib)
+			if (add) previous.push(lib)
+			return previous
+		}, libsToLoad)
 
-		// load omniture lib
-		omniture.load(() => checkLoaded('omniture'))
+		// setup promises to load all libs then setup
+		const promises = libs.map(lib => {
+			return new Promise((resolve, reject) =>
+			  	lib.load(err => {
+			  		if (err) reject(err)
+			  		else resolve(lib.name)
+			  	})
+			)
+		})
 
-		// load meter lib
-		meter(() => checkLoaded('meter'))
+		promise.All(promises)
+			.then(handleLoaded)
+			.catch(handleError)
+		// // load chartbeat lib
+		
 
-		// load fb lib
-		socialConnect.load(() => checkLoaded('socialConnect'));
+		// // load omniture lib
+		// omniture.load(() => checkLoaded('omniture'))
 
+		// // load meter lib
+		// meter(() => checkLoaded('meter'))
+
+		// // load fb lib
+		// socialConnect.load(() => checkLoaded('socialConnect'));
 	}
 
 }
