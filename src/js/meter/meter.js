@@ -5,7 +5,7 @@ import disableScroll from '../utils/disableScroll'
 import isMobile from '../utils/isMobile'
 import toggleClass from '../utils/toggleClass'
 import insertStyle from '../utils/insertStyle'
-import html from './paywall-html'
+import html from './meter-html'
 
 const meter = {
 	load: cb => {

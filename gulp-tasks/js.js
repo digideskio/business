@@ -29,11 +29,11 @@ gulp.task('js-move', function() {
 		.pipe(gulp.dest('.tmp/js'))
 });
 
-gulp.task('inject-paywall-css', function() {
-	const css = fs.readFileSync('.tmp/css/paywall.css', 'utf8')
-	return gulp.src('.tmp/js/paywall/paywall.js')
+gulp.task('inject-meter-css', function() {
+	const css = fs.readFileSync('.tmp/css/meter.css', 'utf8')
+	return gulp.src('.tmp/js/meter/meter.js')
 		.pipe(replace('*inject-css*', css))
-		.pipe(gulp.dest('.tmp/js/paywall'))
+		.pipe(gulp.dest('.tmp/js/meter'))
 });
 
 gulp.task('inject-socialConnect-css', function() {
@@ -45,12 +45,12 @@ gulp.task('inject-socialConnect-css', function() {
 
 gulp.task('inject-logo-svg', function() {
 	const css = fs.readFileSync('src/svg/g-logo.svg', 'utf8')
-	return gulp.src('.tmp/js/paywall/paywall-html.js')
+	return gulp.src('.tmp/js/meter/meter-html.js')
 		.pipe(replace('*inject-svg*', css))
-		.pipe(gulp.dest('.tmp/js/paywall'))
+		.pipe(gulp.dest('.tmp/js/meter'))
 });
 
-gulp.task('js-compile', ['inject-paywall-css', 'inject-socialConnect-css', 'inject-logo-svg'], function() {
+gulp.task('js-compile', ['inject-meter-css', 'inject-socialConnect-css', 'inject-logo-svg'], function() {
 	return gulp.src('.tmp/js/index.js')
 		.pipe(webpackStream(prod_config))
 		.pipe(rename(`business-${version}.js`))

@@ -7,16 +7,16 @@ import socialConnect from './socialConnect/socialConnect'
 import getMetaContent from './utils/getMetaContent'
 
 function handleLoaded(libs) {
-	const paywall = libs['meter'] && !methode.subscribed && methode.showPaywall
-
+	const paywall = libs.indexOf('meter') > -1 && !methode.subscribed && methode.showPaywall
+	console.log(libs)
 	// check if we need to trigger paywall
-	if (paywall) libs['meter'].showPaywall()
+	if (paywall) meter.showPaywall()
 
 	// start tracking all the things
 	omniture.setupTracking(paywall)
 	
 	// check if we need to show social signon		
-	if (libs['socialConnect']) socialConnect.setup()
+	if (libs.indexOf('socialConnect') > -1) socialConnect.setup()
 }
 
 function handleError(error) {
@@ -42,12 +42,13 @@ function init() {
 
 		// setup promises to load all libs then setup
 		const promises = libs.map(lib =>
-			new Promise((resolve, reject) =>
-			  	lib[getLibName(lib)].load(err => {
-			  		if (err) reject(err)
-			  		else resolve(lib)
-			  	})
-			)
+			new Promise((resolve, reject) => {
+				const name = getLibName(lib)
+				lib[name].load(err => {
+					if (err) reject(err)
+					else resolve(name)
+				})
+			})
 		)
 
 		Promise.all(promises)
