@@ -12,8 +12,8 @@ const meter = {
 		window.methode = {}
 
 		loadJS('//www.bostonglobe.com/js/metercheck.js', () => {
-			const hasPaywall = getMetaContent('paywall')
-			const registrationWallVal = hasPaywall ? 'non-exempt' : 'exempt'
+			const hasMeter = getMetaContent('meter') === 'true'
+			const registrationWallVal = hasMeter ? 'non-exempt' : 'exempt'
 
 			window.bglobe.freeviewMeter.init({
 				pageId: getPageId(),
