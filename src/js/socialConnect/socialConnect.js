@@ -151,10 +151,8 @@ const socialConnect = {
 			version 	: 'v2.2',
 		})
 
-		if (!methode.subscribed && methode.freeviewCount === 1 && methode.freeviewCountIncremented) {
-			show()
-		}
-	}	
+		if (!methode.subscribed && methode.freeviewCount === 1) show()
+	}
 }
 
 export default socialConnect
