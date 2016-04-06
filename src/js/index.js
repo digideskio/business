@@ -8,7 +8,7 @@ import getMetaContent from './utils/getMetaContent'
 
 function handleLoaded(libs) {
 	const paywall = libs.indexOf('meter') > -1 && !methode.subscribed && methode.showPaywall
-	console.log(libs)
+
 	// check if we need to trigger paywall
 	if (paywall) meter.showPaywall()
 
