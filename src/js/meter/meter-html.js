@@ -5,7 +5,7 @@ function html(pageId) {
 <div class='paywall benton-bold'>
 	<div class='paywall--content'>
 		<div class='paywall--content-inner'>
-			<a href='http://bostonglobe.com' alt='The Boston Globe'>
+			<a class='paywall--logo' href='http://bostonglobe.com' alt='The Boston Globe'>
 				*inject-svg*
 			</a>
 			<p class='paywall--cta'>You have reached your free article limit. Subscribe now for unlimited access to BostonGlobe.com.</p>
