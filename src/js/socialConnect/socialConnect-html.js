@@ -15,8 +15,8 @@ function html() {
 			<button type='submit' class='socialconnect-email--button benton-bold'>Sign up &amp; return to story</button>
 		</form>
 
-		<div class='socialconnect--small'>
-			<small class='benton-bold'>Already a subscriber?
+		<div class='socialconnect--small benton-bold'>
+			<small>Already a subscriber?
 				<a href='https://www.bostonglobe.com/eom/SysConfig/WebPortal/BostonGlobe/Framework/regi/final-login.jsp' onclick='var s=s_gi("nytbostonglobecom"); s.tl(this,"o","BG Meter Login");'>
 					Sign in
 				</a>

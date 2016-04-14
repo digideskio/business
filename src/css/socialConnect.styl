@@ -6,6 +6,13 @@ $offblack = #333
 $offwhite = #efefef
 $lt-gray = #eee
 
+$bigbutton
+	border-radius 3px
+	transition 0.2s ease-in-out all
+	padding 1em 0.5em
+	border-radius 3px
+	width 100%
+
 .socialconnect 
 	position fixed 
 	top 0 
@@ -75,10 +82,7 @@ $lt-gray = #eee
 		border none
 		background-color #5975b1
 		color #fff
-		transition $ease
-		padding 0.75em 1em
-		border-radius 3px
-		width 100%
+		@extends $bigbutton
 		
 		&:hover
 			background-color darken(#5975b1, 15)
@@ -105,7 +109,6 @@ $lt-gray = #eee
 	&-email--input
 		margin 0 auto 1em auto
 		display block
-		
 		border-left none
 		border-right none
 		border-top none
@@ -126,10 +129,7 @@ $lt-gray = #eee
 		background-color #f2f2e8
 		border 1px solid #c1c1b9
 		color $offblack
-		transition $ease
-		padding 0.75em 1em
-		border-radius 3px
-		width 100%
+		@extends $bigbutton
 		
 		&:hover
 			background-color $offblack
@@ -140,6 +140,8 @@ $lt-gray = #eee
 		font-size 0.75em
 		color lighten($offblack, 30)
 		padding-top 1em
+		> *
+			line-height 1.5
 
 
 .invisible
