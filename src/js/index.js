@@ -7,7 +7,11 @@ import socialConnect from './socialConnect/socialConnect'
 import getMetaContent from './utils/getMetaContent'
 
 function handleLoaded(libs) {
-	const paywall = libs.indexOf('meter') > -1 && !methode.subscribed && methode.showPaywall
+	let paywall = false
+	
+	if (libs.indexOf('meter') > -1) {
+		paywall = !methode.subscribed && methode.showPaywall
+	}
 
 	// check if we need to trigger paywall
 	if (paywall) meter.showPaywall()
@@ -28,7 +32,7 @@ function getLibName(lib) {
 }
 
 function init() {
-	if (window.location.hostname.indexOf('localhost')) {
+	if (window.location.hostname.indexOf('localhost') === -1) {
 		// list of which libs to load
 		const defaultLibs = [{chartbeat}, {omniture}]
 		const optionalLibs = [{meter}, {socialConnect}]
