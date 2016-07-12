@@ -25,6 +25,10 @@ const omniture = {
 		window.s.prop67 = pageId
 		window.s.eVar67 = pageId
 
+		// pageLayout
+		const pageLayout = getMetaContent('pageLayout')
+		if (pageLayout) window.s.prop4 = pageLayout
+
 		if (window.methode && window.methode.freeviewCountIncremented) {
 			window.s.prop48 = window.methode.freeviewCount
 		}
