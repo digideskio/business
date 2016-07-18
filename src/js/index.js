@@ -8,7 +8,7 @@ import getMetaContent from './utils/getMetaContent'
 
 function handleLoaded(libs) {
 	let paywall = false
-	const checkPaywall = getMetaContent('paywall').toLowerCase() === 'true'
+	const checkPaywall = getMetaContent('meter').toLowerCase() === 'true'
 
 	if (checkPaywall) {
 		paywall = !methode.subscribed && methode.showPaywall
